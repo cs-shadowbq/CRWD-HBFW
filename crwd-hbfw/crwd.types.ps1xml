@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Types>
+    <Type>
+        <Name>CRWDFWFilter</Name>
+        <Members>
+            <ScriptProperty>
+                <Name>Details</Name>
+                <GetScriptBlock>
+                    $out = ""
+                    $rule = $this
+                    $rule | Get-Member -MemberType Property | % { 
+                        if ($Rule.$($_.Name)) {
+                            if ($_.Name -like 'FWPM_CONDITION_*') {
+                                $out += "$($_.Name.Replace('FWPM_CONDITION_','')): $($rule.$($_.Name))|" 
+                            } 
+                        }
+                    }
+                    $out
+                </GetScriptBlock>
+            </ScriptProperty>
+        </Members>
+    </Type>
+    <Type>
+        <Name>CRWDFWRule</Name>
+        <Members>
+            <MemberSet>
+                <Name>PSStandardMembers</Name>
+                <Members>
+                    <PropertySet>
+                        <Name>DefaultKeyPropertySet</Name>
+                        <ReferencedProperties>
+                            <Name>RuleType</Name>
+                            <Name>ActionType</Name>
+                            <Name>Id</Name>
+                        </ReferencedProperties>
+                    </PropertySet>
+                </Members>
+            </MemberSet>
+        </Members>
+    </Type>
+</Types>
