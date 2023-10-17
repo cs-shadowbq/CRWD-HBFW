@@ -320,7 +320,7 @@ function Get-CrwdHbfw {
         [string]$AppId = ''
     )
 
-    $test_dep = [bool](Get-Command -Name 'Get-FwFilters' -ErrorAction SilentlyContinue)
+    $test_dep = [bool](Get-Command -Name 'Get-FwFilter' -ErrorAction SilentlyContinue)
     if ($test_dep -ne $true) {
         Throw "Missing Required PowerShell Module 'NtObjectManager', with Cmdlet 'Get-FwFilter'"
     }
