@@ -1,6 +1,6 @@
 # CRWD-HBFW
 
-CrowdStrike Powershell module for parsing WFP for Falcon Host Based Firewall
+[![CRWD-HBFW](https://img.shields.io/powershellgallery/v/crwd-hbfw.svg?style=flat-square&label=crwd-hbfw)](https://www.powershellgallery.com/packages/crwd-hbfw/) CrowdStrike Powershell module for parsing WFP for Falcon Host Based Firewall
 
 ## BackGround
 
