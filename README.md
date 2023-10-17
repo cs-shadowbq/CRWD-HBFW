@@ -130,6 +130,82 @@ FWPM_CONDITION_IP_LOCAL_PORT: 3389
 FWPM_CONDITION_IP_PROTOCOL: Udp
 ```
 
+## Get-Help
+
+```
+NAME
+    Get-CrwdHbfw
+
+SYNOPSIS
+    Display current CrowdStrike HostBased Firewall filters based on the Windows filter Platform(WFP).
+
+
+SYNTAX
+    Get-CrwdHbfw [[-ActionType] <String>] [[-Id] <String>] [[-RuleType] <String>] [[-LPort] <String>] [[-RPort] <String>] [[-LIP] <String>] [[-RIP] <String>]
+    [[-Protocol] <String>] [[-AppId] <String>] [<CommonParameters>]
+
+
+DESCRIPTION
+    The Get-CrwdHbfw function displays current CrowdStrike HostBased Firewall filters based on the Windows filter Platform(WFP).
+    Get-CrwdHbfw outputs a list of CRWDFWFilter objects.
+    CRWDFWFilter objects are custom objects that contain the following properties:
+    Id, ActionType, EffectiveWeight, RuleType, FWPM_CONDITION_*.
+
+
+PARAMETERS
+    -ActionType <String>
+        The ActionType parameter specifies the action type of the WFP filter.
+        The ActionType parameter must be either 'Permit' or 'Block'.
+
+    -Id <String>
+        The Id parameter specifies the Id / FilterId of the WFP filter.
+
+    -RuleType <String>
+        The RuleType parameter specifies the RuleType of the WFP filter.
+        The RuleType parameter must be either 'Persistent, Indexed' or 'BootTime, Indexed'.
+
+    -LPort <String>
+        The LPort parameter specifies the local port of the WFP filter.
+
+    -RPort <String>
+        The RPort parameter specifies the remote port of the WFP filter.
+
+    -LIP <String>
+        The LIP parameter specifies the local IP address of the WFP filter.
+
+    -RIP <String>
+        The RIP parameter specifies the remote IP address of the WFP filter.
+
+    -Protocol <String>
+        The Protocol parameter specifies the protocol of the WFP filter.
+
+    -AppId <String>
+        The AppId parameter specifies the AppId of the WFP filter.
+
+    <CommonParameters>
+        This cmdlet supports the common parameters: Verbose, Debug,
+        ErrorAction, ErrorVariable, WarningAction, WarningVariable,
+        OutBuffer, PipelineVariable, and OutVariable. For more information, see
+        about_CommonParameters (https:/go.microsoft.com/fwlink/?LinkID=113216).
+
+    -------------------------- EXAMPLE 1 --------------------------
+
+    PS>Get-CrwdHbfw -ActionType 'Permit' -LPort 3389
+
+    -------------------------- EXAMPLE 2 --------------------------
+
+    PS>Get-CrwdHbfw -ActionType 'Block' -LPort 50000
+
+    -------------------------- EXAMPLE 3 --------------------------
+
+    PS>Get-CrwdHbfw -ActionType 'Block' -RPort 22 -RIP 10.0.0.0/8
+
+REMARKS
+    To see the examples, type: "get-help Get-CrwdHbfw -examples".
+    For more information, type: "get-help Get-CrwdHbfw -detailed".
+    For technical information, type: "get-help Get-CrwdHbfw -full".
+```
+
 ## Private Functions
 
 ```powershell
