@@ -2,13 +2,46 @@
 
 These steps will register your local folder as a PSRepository and Package your PowerShell module so that `Install-Module` will find the package and install it. Be sure to replace `<user>` with your actual username directory.
 
+## Quick Start
+
+(Administrative PowerShell Prompt)
+
+Dep:
+
+```powershell
+Install-Module -Name NtObjectManager -RequiredVersion 2.0.0
+```
+
+Build Install:
+
+```powershell
+cd $HOME\Sandbox\CRWD-HBFW
+Copy-Item -Force -Recurse .\crwd-hbfw $HOME\Documents\WindowsPowerShell\Modules\.
+Publish-Module -Name crwd-hbfw -Repository LocalModules -Force -Verbose
+Install-Module crwd-hbfw -Repository LocalModules -Verbose -Force -AllowClobber -Scope AllUsers
+Import-Module -Name crwd-hbfw
+Get-CrwdHbfw
+```
+
+Remove:
+
+```powershell
+Remove-Module -Name crwd-hbfw
+Uninstall-Module -Name crwd-hbfw -AllVersions
+Remove-Item -Force -Recurse $HOME\Documents\WindowsPowerShell\Modules\crwd-hbfw
+Remove-Item -Force -Recurse $HOME\Documents\WindowsPowerShell\Repo\crwd-hbfw*
+```
+
+
+## Standard Start
+
 * At the PowerShell prompt enter get the first line returned from the following command:
 
 ```powershell
 $env:PSModulePath
 ```
 
-The `$env:PSModulePath` variable holds the locations where PowerShell looks for the installed modules. 
+The `$env:PSModulePath` variable holds the locations where PowerShell looks for the installed modules.
 
 ```powershell
 $env:PSModulePath.Split(";")
@@ -69,7 +102,7 @@ The directory name must match the module name (not including the extension “.p
 Example:
 
 ```powershell
-New-ModuleManifest -Path .\ManageVMs.psd1
+New-ModuleManifest -Path .\crwd-hbfw.psd1
 ```
 
 * Edit the manifest psd1 file, uncomment and provide values for the following required properties:
@@ -84,7 +117,7 @@ If you create new releases you should come back to this file to update the versi
 
 ### Option 2:
 
-With a precreated directory in your developmental sandbox, copy the module to a location that is in the search path
+With a pre-created directory in your developmental sandbox, copy the module to a location that is in the search path
 
 ```powershell
 Copy-Item -Force -Recurse "$HOME\sandbox\<module name>" "$HOME\Documents\WindowsPowerShell\Modules\."
