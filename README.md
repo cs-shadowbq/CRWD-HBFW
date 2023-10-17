@@ -6,11 +6,11 @@ CrowdStrike Powershell module for parsing WFP for Falcon Host Based Firewall
 
 CRWD-HBFW is a light-weight, powershell module that helps you debug and analyze the Windows Filtering Platform in the context of the CrowdStrike Falcon HostBased Firewall.
 
-Crowdstrike Falcon's Host-based firewall is a module from the CrowdStrike Endpoint Protection Platform. It is enabled through the cs-agent located on the endpoint, and controlled through a channel file delivered to the endpoint.
+CrowdStrike Falcon's Host-based firewall is a module from the CrowdStrike Endpoint Protection Platform. It is enabled through the cs-agent located on the endpoint, and controlled through a channel file delivered to the endpoint.
 
 CrowdStrike Firewall can have many network locations, and the agent will remove or add WFP filters based on the network location which is currently active.
 
-This PS module is designed to help understand the current WFP active filters on a Windows Host with Crowdstrikes Falcon Hostbased Firewall enabled.
+This PS module is designed to help understand the current WFP active filters on a Windows Host with CrowdStrikes Falcon HostBased Firewall enabled.
 
 *Note:* _CRWD-HBFW_ utilizes [NtObjectManager](https://github.com/googleprojectzero/sandbox-attacksurface-analysis-tools/tree/main/NtObjectManager) to access the WFP APIs. This module adds a provider and cmdlets to access the NT object manager namespace. 
 
@@ -205,6 +205,20 @@ You must use an * elevated rights (Run as Administrator)* powershell session:
 ```powershell
 Uninstall-Module crwd-hbfw
 Uninstall-Module -Name NtObjectManager
+```
+
+## Dependency
+
+If you do not install the `NtObjectManager` module per the above instructions, you will get the following error:
+
+```powershell
+PS > Get-CrwdHbfw
+Missing Required PowerShell Module 'NtObjectManager', with Cmdlet 'Get-FwFilter'
+At C:\Users\xxxx\Documents\WindowsPowerShell\Modules\crwd-hbfw\crwd-hbfw.psm1:328 char:9
++         Throw "Missing Required PowerShell Module 'NtObjectManager',  ...
++         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : OperationStopped: (Missing Require... 'Get-FwFilter':String) [], RuntimeException
+    + FullyQualifiedErrorId : Missing Required PowerShell Module 'NtObjectManager', with Cmdlet 'Get-FwFilter'
 ```
 
 ## NtObjectManager

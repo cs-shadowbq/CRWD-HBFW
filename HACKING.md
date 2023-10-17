@@ -64,7 +64,10 @@ The directory name must match the module name (not including the extension “.p
 
 * Copy the PSM1 file to the <module name> directory
 
-* Create the manifest (.psd1) file, example:
+* Create the manifest (.psd1) file, 
+  
+Example:
+
 ```powershell
 New-ModuleManifest -Path .\ManageVMs.psd1
 ```
@@ -151,12 +154,11 @@ VERBOSE: Catalog file 'crwd-hbfw.cat' is not found in the contents of the module
 VERBOSE: For publisher validation, current module 'crwd-hbfw' with version '1.0.1' with publisher name ''. Is this module signed by Microsoft: 'False'.
 VERBOSE: For publisher validation, using the previously-installed module 'crwd-hbfw' with version '1.0.1' under 'C:\Users\xxxx\Documents\WindowsPowerShell\Modules\crwd-hbfw' with publisher name ''. Is this module signed by Microsoft: 'False'.
 VERBOSE: Module 'crwd-hbfw' was installed successfully to path 'C:\Program Files\WindowsPowerShell\Modules\crwd-hbfw\1.0.1'.
-
-Get-Module
 ```
+List Loaded Modules
 
 ```powershell
-PS C:\Users\xxx\sandbox\CRWD-HBFW> Get-Module
+PS > Get-Module
 
 ModuleType Version    Name                                ExportedCommands
 ---------- -------    ----                                ----------------
@@ -173,6 +175,15 @@ Script     2.0.0      PSReadline                          {Get-PSReadLineKeyHand
 Import-Module -Name <module name>
 ```
 
+```powershell
+PS > Get-Module
+
+ModuleType Version    Name                                ExportedCommands
+---------- -------    ----                                ----------------
+Script     1.0.1      crwd-hbfw                           {Format-CrwdHbfw, Get-CrwdHbfw}
+(...)
+```
+
 ## PowerShell Gallery (PSGallery)
 
 Now that you have gone through the process of creating a PowerShell module that you can import. If you wish to share this with the world so that others may reuse what you have created, you can publish to the PSGallery. The PSGallery is the default PowerShell location that users find new modules, download them and receive updates.
@@ -186,6 +197,7 @@ To do this you will need to sign up for a free account and get your `-NuGetApiKe
 Now that you have an apikey you may publish to the PSGallery just like you published to your LocalModules repository. 
 
 Example:
+
 ```powershell
 Publish-Module -Name ManageRoles -NuGetApiKey 'ab12cde3fgh45ijk67lmnopq8rs9tuvwxyzabcdefghij0' -requiredversion 1.1.0 -verbose
 ```

@@ -157,10 +157,6 @@ function Test-isIPv6([System.Net.IPAddress]$addr) {
     return ($addr.AddressFamily -eq [System.Net.Sockets.AddressFamily]::InterNetworkV6)
 }
 
-function Test-Command($cmdname)
-{
-    return [bool](Get-Command -Name $cmdname -ErrorAction SilentlyContinue)
-}
 
 function Get-StagedWFPFilter {
     param(
@@ -324,7 +320,8 @@ function Get-CrwdHbfw {
         [string]$AppId = ''
     )
 
-    if (Test-Command -cmdname 'Get-FwFilter' -ne $true) {
+    $test_dep = [bool](Get-Command -Name 'Get-FwFilters' -ErrorAction SilentlyContinue)
+    if ($test_dep -ne $true) {
         Throw "Missing Required PowerShell Module 'NtObjectManager', with Cmdlet 'Get-FwFilter'"
     }
 
