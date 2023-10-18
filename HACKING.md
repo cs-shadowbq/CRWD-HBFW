@@ -28,7 +28,7 @@ Remove:
 ```powershell
 Remove-Module -Name crwd-hbfw
 Uninstall-Module -Name crwd-hbfw -AllVersions
-Remove-Item -Force -Recurse $HOME\Documents\WindowsPowerShell\Modules\crwd-hbfw
+Remove-Item -Force -Recurse $HOME\Documents\WindowsPowerShell\Modules\crwd-hbfw*
 Remove-Item -Force -Recurse $HOME\Documents\WindowsPowerShell\Repo\crwd-hbfw*
 ```
 
@@ -188,7 +188,8 @@ VERBOSE: For publisher validation, current module 'crwd-hbfw' with version '1.0.
 VERBOSE: For publisher validation, using the previously-installed module 'crwd-hbfw' with version '1.0.1' under 'C:\Users\xxxx\Documents\WindowsPowerShell\Modules\crwd-hbfw' with publisher name ''. Is this module signed by Microsoft: 'False'.
 VERBOSE: Module 'crwd-hbfw' was installed successfully to path 'C:\Program Files\WindowsPowerShell\Modules\crwd-hbfw\1.0.1'.
 ```
-List Loaded Modules
+
+List Loaded Modules or (Get-InstalledModule)
 
 ```powershell
 PS > Get-Module
@@ -200,6 +201,15 @@ Manifest   3.1.0.0    Microsoft.PowerShell.Utility        {Add-Member, Add-Type,
 Binary     1.0.0.1    PackageManagement                   {Find-Package, Find-PackageProvider, Get-Package, Get-PackageProvider...}
 Script     1.0.0.1    PowerShellGet                       {Find-Command, Find-DscResource, Find-Module, Find-RoleCapability...}
 Script     2.0.0      PSReadline                          {Get-PSReadLineKeyHandler, Get-PSReadLineOption, Remove-PSReadLineKeyHandler, Set-PSReadLin...
+```
+
+```powershell
+PS > Get-InstalledModule
+
+Version    Name                                Repository           Description
+-------    ----                                ----------           -----------
+2.0.0      NtObjectManager                     PSGallery            This module adds a provider and cmdlets to access the NT object manager namespace.
+2.2.3      PSFalcon                            PSGallery            PowerShell for the CrowdStrike Falcon OAuth2 APIs
 ```
 
 *Note: If your new module doesn't import automatically, your may need to run `Import-Module`*
