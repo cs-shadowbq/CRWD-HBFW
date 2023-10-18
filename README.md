@@ -299,6 +299,11 @@ At C:\Users\xxxx\Documents\WindowsPowerShell\Modules\crwd-hbfw\crwd-hbfw.psm1:32
 
 ## NtObjectManager
 
+PSGallery NtObjectManager - https://www.powershellgallery.com/packages/NtObjectManager/2.0.0  
+Owner: `googleprojectzero/sandbox-attacksurface-analysis-tools`  
+(c) Google LLC. 2015 - 2021  
+Developed by James Forshaw  
+
 *Under the Hood*
 
 `Get-FwFilter` from [NtObjectManager] is the core of `Get-CrwdHbfw`. Its output is filtered by `Get-CrwdHbfw` to only show the filters that are relevant to CrowdStrike HostBased Firewalls implemented by WFP.
