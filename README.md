@@ -67,8 +67,7 @@ Provided Benefits:
 - `Details` is a META property that contains the details of the FWPM_Condition filter in a human readable format when using `Format-Table`.
 
 ```powershell
-PS > Get-N2 -ActionType 'Permit' -LPort 3389 -Protocol Tcp | Format-Table                                                                                                      [debug] Get-N2 ** ParamHash:
-
+PS > Get-CRWDFwFilter -ActionType 'Permit' -LPort 3389 -Protocol Tcp | Format-Table
 Rule Type            Action Type          Id                   Details
 ---------            -----------          --                   -------
 Persistent, Indexed  Permit               110555               FLAGS: FlagsNoneSet:IsLoopback|IP_LOCAL_PORT: 3389|IP_PROTOCOL: Tcp|
@@ -250,7 +249,8 @@ RuleType: Boottime, Indexed
 ## Enabling Debug
 
 ```powershell
-Get-CrwdHbfw -ActionType 'Block' -Debug | Format-Table                                                                                                                                  [debug] Get-CrwdHbfw ** ParamHash:
+Get-CrwdHbfw -ActionType 'Block' -Debug | Format-Table
+[debug] Get-CrwdHbfw ** ParamHash:
 [debug] ------------------
 {
     "ActionType":  "Block",
